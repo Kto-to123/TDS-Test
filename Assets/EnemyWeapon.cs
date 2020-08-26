@@ -12,11 +12,17 @@ public class EnemyWeapon : MonoBehaviour
     private void OnEnable()
     {
         coroutine = StartCoroutine(Shooting());
+        PlayerHealth.PlayerDefeated += StopCoroutine;
+    }
+
+    void StopCoroutine()
+    {
+        StopCoroutine(coroutine);
     }
 
     private void OnDisable()
     {
-        StopCoroutine(coroutine); 
+        PlayerHealth.PlayerDefeated -= StopCoroutine;
     }
 
     IEnumerator Shooting()

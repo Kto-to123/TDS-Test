@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     {
         EnemyManager.AllEnemiesDefeated += DestroyBullet;
         LevelManager.Restart += DestroyBullet;
+        PlayerHealth.PlayerDefeated += DestroyBullet;
     }
 
     private void FixedUpdate()
@@ -32,6 +33,7 @@ public class Bullet : MonoBehaviour
     {
         EnemyManager.AllEnemiesDefeated -= DestroyBullet;
         LevelManager.Restart -= DestroyBullet;
+        PlayerHealth.PlayerDefeated -= DestroyBullet;
         Destroy(gameObject);
     }
 }
